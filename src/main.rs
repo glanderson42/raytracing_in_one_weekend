@@ -4,6 +4,8 @@ use std::time::{Duration, Instant};
 
 mod raytracer;
 
+use raytracer::vec3;
+
 fn main() -> std::io::Result<()> {
     let image_width: f32 = 1920.0;
     let image_height: f32 = 1080.0;
@@ -19,7 +21,7 @@ fn main() -> std::io::Result<()> {
             let r = j as f32 / image_width;
             let g = i as f32 / image_height;
             let b = 0.2;
-            let vec = raytracer::vec3::Vec3::new(r, g, b);
+            let vec = vec3::Vec3::new(r, g, b);
             let _ = vec.write_to_file(&mut file);
         }
     }

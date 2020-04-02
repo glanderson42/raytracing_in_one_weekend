@@ -1,11 +1,15 @@
 use std::fs::File;
 use std::io::prelude::*;
+use std::time::{Duration, Instant};
 
 mod raytracer;
 
 fn main() -> std::io::Result<()> {
-    let image_width: f32 = 200.0;
-    let image_height: f32 = 100.0;
+    let image_width: f32 = 1920.0;
+    let image_height: f32 = 1080.0;
+    
+    let start_time = Instant::now();
+
     let mut file = File::create("raytacing.ppm")?;
     let header = "P3\n".to_owned() + &image_width.to_string() + " " + &image_height.to_string() + "\n255\n";
     file.write_all(header.as_bytes())?;
@@ -20,5 +24,8 @@ fn main() -> std::io::Result<()> {
         }
     }
     println!("Done!");
+    let duration = start_time.elapsed();
+    println!("Took: {:?}", duration);
+
     Ok(())
 }

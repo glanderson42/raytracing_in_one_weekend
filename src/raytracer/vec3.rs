@@ -1,13 +1,15 @@
-use std::ops::Neg;
-use std::ops::AddAssign;
-use std::ops::MulAssign;
-use std::ops::DivAssign;
+use std::ops::{
+    Neg,
+    AddAssign,
+    MulAssign,
+    DivAssign
+};
 
 use std::fs::File;
 use std::io::prelude::*;
 
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Vec3 {
     pub x: f32,
     pub y: f32,

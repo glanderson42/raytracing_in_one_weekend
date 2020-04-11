@@ -34,10 +34,16 @@ impl Vec3 {
         self.length_squared().sqrt()
     }
 
-    pub fn write_to_file(&self, file: &mut File) -> Result<(), ()> {
-        let _x = (255.999 * self.x) as i32;
-        let _y = (255.999 * self.y) as i32;
-        let _z = (255.999 * self.z) as i32;
+    pub fn write_to_file(&mut self, file: &mut File, samples_per_pixel: i32) -> Result<(), ()> {
+        let _scale = 1.0 / samples_per_pixel as f32;
+        self.x *= _scale;
+        self.y *= _scale;
+        self.z *= _scale;
+
+        let _x = (self.clamp(self.x, 0.0, 0.999) * 256.0) as i32;
+        let _y = (self.clamp(self.y, 0.0, 0.999) * 256.0) as i32;
+        let _z = (self.clamp(self.z, 0.0, 0.999) * 256.0) as i32;
+
         let line = _x.to_string() + " " + &_y.to_string() + " " + &_z.to_string() + "\n";
         let res = file.write_all(line.as_bytes());
         match res {
@@ -50,8 +56,18 @@ impl Vec3 {
         *self / self.length()
     }
 
-    fn length_squared(&self) -> f32 {
+    pub fn length_squared(&self) -> f32 {
         self.x.powi(2) + self.y.powi(2) + self.z.powi(2)
+    }
+
+    fn clamp(&self, x: f32, min: f32, max: f32) -> f32 {
+        if x < min {
+            return min;
+        } else if x > max {
+            return max;
+        } else {
+            return x;
+        }
     }
 }
 

@@ -198,6 +198,7 @@ impl Div<f32> for Vec3 {
     }
 }
 
+#[allow(dead_code)]
 impl DivAssign for Vec3 {
     fn div_assign(&mut self, other: Vec3) {
         self.x /= other.x;
@@ -218,6 +219,7 @@ pub fn dot(a: Vec3, b: Vec3) -> f32 {
     a.x * b.x + a.y * b.y + a.z * b.z
 }
 
+#[allow(dead_code)]
 pub fn cross(a: Vec3, b: Vec3) -> Vec3 {
     Vec3 {
         x: a.y * b.z - a.z * b.y,

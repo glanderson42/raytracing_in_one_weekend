@@ -15,6 +15,7 @@ impl Ray {
     }
 }
 
+#[allow(dead_code)]
 pub fn hit_sphere(center: Vec3, radius: f32, r: Ray) -> f32 {
     let oc = r.origin - center;
     let a = r.direction.length_squared();
@@ -28,6 +29,7 @@ pub fn hit_sphere(center: Vec3, radius: f32, r: Ray) -> f32 {
     }
 }
 
+#[allow(dead_code)]
 pub fn ray_color(r: &mut Ray) -> Vec3 {
     let mut t = hit_sphere(Vec3::new(0.0, 0.0, -1.0), 0.5, *r);
     if t > 0.0 {

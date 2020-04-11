@@ -9,6 +9,7 @@ pub struct Sphere {
 }
 
 impl Sphere {
+    #[allow(dead_code)]
     pub fn origin() -> Sphere {
         Sphere { center: Vec3::origin(), radius: 0.0 }
     }

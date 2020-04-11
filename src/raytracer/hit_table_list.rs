@@ -1,11 +1,6 @@
 use std::vec::Vec;
 use std::boxed::Box;
 
-use crate::ray::{
-    Ray,
-};
-
-use crate::hit_record::HitRecord;
 use crate::hitable::Hitable;
 
 pub struct HitTableList {
@@ -21,6 +16,7 @@ impl HitTableList {
         self.objects.push(object);
     }
 
+    #[allow(dead_code)]
     pub fn clear(&mut self) {
         self.objects.clear();
     }

@@ -12,7 +12,7 @@ pub fn float_max(a: f32, b: f32) -> f32 {
     }
 }
 
-pub fn float_min(a: f32, b: f32) -> {
+pub fn float_min(a: f32, b: f32) -> f32 {
     if a >= b {
         return a;
     } else {

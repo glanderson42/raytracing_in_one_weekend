@@ -1,18 +1,18 @@
 use std::vec::Vec;
 use std::boxed::Box;
 
-use crate::hitable::Hitable;
+use crate::Hitable;
 
 pub struct HitTableList {
-    pub objects: Vec<Box<dyn Hitable>>
+    pub objects: Vec<Box<Hitable>>
 }
 
 impl HitTableList {
     pub fn new() -> HitTableList {
-        HitTableList { objects: Vec::<Box<dyn Hitable>>::new() }
+        HitTableList { objects: Vec::<Box<Hitable>>::new() }
     }
 
-    pub fn new_object(&mut self, object: Box<dyn Hitable>) {
+    pub fn new_object(&mut self, object: Box<Hitable>) {
         self.objects.push(object);
     }
 

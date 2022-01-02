@@ -1,8 +1,8 @@
-use crate::ray::Ray;
-use crate::hit_record::HitRecord;
-use crate::sphere::*;
-use crate::vec3::*;
-use crate::hit_table_list::*;
+use crate::Ray;
+use crate::HitRecord;
+use crate::Sphere;
+use crate::Vec3;
+use crate::HitTableList;
 
 pub trait Hitable {
     fn hit(&self, r: &mut Ray, t_min: f32, t_max: f32, rec: &mut HitRecord) -> bool;
@@ -12,7 +12,7 @@ impl Hitable for Sphere {
     fn hit(&self, r: &mut Ray, t_min: f32, t_max: f32, rec: &mut HitRecord) -> bool {
         let oc = r.origin - self.center;
         let a = r.direction.length_squared();
-        let half_b = dot(oc, r.direction);
+        let half_b = Vec3::dot(oc, r.direction);
         let c = oc.length_squared() - self.radius.powi(2);
         let discriminant = half_b.powi(2) - a * c;
 

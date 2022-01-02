@@ -1,7 +1,4 @@
-use crate::vec3::{
-    Vec3,
-    dot
-};
+use crate::Vec3;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Ray {
@@ -19,7 +16,7 @@ impl Ray {
 pub fn hit_sphere(center: Vec3, radius: f32, r: Ray) -> f32 {
     let oc = r.origin - center;
     let a = r.direction.length_squared();
-    let half_b = dot(oc, r.direction);
+    let half_b = Vec3::dot(oc, r.direction);
     let c = oc.length_squared() - radius.powi(2);
     let discriminant = half_b.powi(2) - a * c;
     if discriminant < 0.0 {
